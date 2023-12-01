@@ -1,0 +1,52 @@
+import streamlit as st
+
+# 스트림릿 페이지 설정
+st.set_page_config(
+    page_title="공공데이터 애널리틱스 - 6조 기말 발표",
+    page_icon="🌿",
+    layout="wide"
+)
+
+# 스트림릿 커스텀 스타일링
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: #f0fff4;
+    }
+    .sidebar .sidebar-content {
+        background: #e6ffed;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# 사이드바 설정
+with st.sidebar:
+    st.markdown("## 공공데이터 애널리틱스 \n 6조 기말 발표")
+    st.markdown("---")
+    st.markdown("### 목차")
+    st.markdown("### 선행연구")
+    st.markdown("### 분석 결과")
+    st.markdown("### Environment (환경)")
+    env_options = [
+        "온실가스 배출량", "에너지 사용량", "에너지 사용량 대비 온실가스 배출량",
+        "용수 사용량", "재사용 용수 비율", "폐기물 배출량",
+        "폐기물 재활용 비율", "대기오염 배출량", "수질오염 배출량"
+    ]
+    env_dropdown = st.selectbox("Environment 옵션 선택", env_options)
+    st.markdown("### Social (사회)")
+    soc_options = [
+        "자발적 이직률", "신규 채용 및 고용 유지", "장애인 고용률",
+        "정규직 비율"
+    ]
+    soc_dropdown = st.selectbox("Social 옵션 선택", soc_options)
+    st.markdown("### 중소기업 데이터")
+    sme_options = ["중소기업 개수", "중소기업 종사자", "중소기업 매출액"]
+    sme_dropdown = st.selectbox("중소기업 데이터 옵션 선택", sme_options)
+    st.markdown("### 정책적 시사점")
+    st.markdown("### 분석 노트 📝")
+
+# 메인 페이지 설정
+st.markdown("# 공공데이터 애널리틱스 - 6조 기말 발표")
