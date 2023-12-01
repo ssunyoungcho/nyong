@@ -8,7 +8,9 @@ Original file is located at
 """
 
 import streamlit as st
-
+from PIL import Image
+import pandas as pd
+import plotly.express as px
 # 스트림릿 페이지 설정
 st.set_page_config(
     page_title="공공데이터 애널리틱스 - 6조 기말 발표",
@@ -57,5 +59,38 @@ with st.sidebar:
     st.markdown("### 정책적 시사점")
     st.markdown("### 분석 노트 📝")
 
+# 'Social (사회)' 드롭다운에서 '자발적 이직률' 선택 시 표시할 내용
+if soc_dropdown == "자발적 이직률":
+    st.markdown("## 자발적 이직률")
+    st.markdown("• 조직의 인적자원 관리 수준이 산업평균 대비 적정한 수준을 유지하며 관리되고 있는지 확인")
+    st.markdown("• 구성원이 자발적으로 조직을 이동하는 자발적 이직률을 점검(산업적 특성 반영)")
+
+    # 이미지 표시
+    image_path = '/Users/sunyoung/Desktop/streamlit/이직률.png'
+    image = Image.open(image_path)
+    st.image(image, caption='이직률')
+
+    # 데이터 불러오기 및 시각화
+    url = 'https://raw.githubusercontent.com/ssunyoungcho/nyong/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%83%E1%85%A9%E1%84%87%E1%85%A7%E1%86%AF%20%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%87%E1%85%A7%E1%86%AF%20%E1%84%8B%E1%85%B5%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%A9%E1%86%BC%E1%84%85%E1%85%B2%E1%86%AF.csv'
+    df = pd.read_csv(url)
+
+    # Plotly 시각화
+    df['year'] = df['year'].astype(int)
+    df_move = df.groupby(['year', '산업명'])['이동자'].mean().reset_index()
+    df_move_sorted = df_move.sort_values(by=['year', '산업명'])
+
+    fig = px.line(df_move_sorted, x='year', y='이동자', color='산업명', markers=True,
+                  title='연도별 산업별 이동자 수 추세 (5개년)',
+                  labels={'year': '연도', '이동자': '이동자 수'},
+                  color_discrete_sequence=px.colors.qualitative.Dark24)
+    fig.update_traces(marker=dict(size=10), line=dict(width=3))
+    fig.update_layout(legend_title='산업분류', height=700, plot_bgcolor='#F2F2F2')
+    fig.update_xaxes(type='linear')
+    fig.update_xaxes(tickvals=[2017, 2018, 2019, 2020, 2021], ticktext=['2017', '2018', '2019', '2020', '2021'])
+    fig.update_layout(yaxis=dict(tickformat=',d'))
+
+    st.plotly_chart(fig, use_container_width=True)
+
+  
 # 메인 페이지 설정
 st.markdown("# 공공데이터 애널리틱스 - 6조 기말 발표")
