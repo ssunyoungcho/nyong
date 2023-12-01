@@ -69,7 +69,7 @@ if soc_dropdown == "자발적 이직률":
     st.markdown("• 구성원이 자발적으로 조직을 이동하는 자발적 이직률을 점검(산업적 특성 반영)")
 
     # 데이터 불러오기
-    data_url = 'https://raw.githubusercontent.com/ssunyoungcho/nyong/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%83%E1%85%A9%E1%84%87%E1%85%A7%E1%86%AF%20%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%87%E1%85%A7%E1%86%AF%20%E1%84%8B%E1%85%B5%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%A9%E1%86%BC%E1%84%85%E1%85%B2%E1%86%AF.csv'
+    data_url = 'https://raw.githubusercontent.com/ssunyoungcho/nyong/main/연도별%20산업별%20이동자이동률.csv'
     df = pd.read_csv(data_url)
 
     
