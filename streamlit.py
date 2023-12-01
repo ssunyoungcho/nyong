@@ -70,7 +70,7 @@ if soc_dropdown == "자발적 이직률":
 
     # 데이터 불러오기
     data_url = 'https://raw.githubusercontent.com/ssunyoungcho/nyong/main/연도별%20산업별%20이동자이동률.csv'
-    df = pd.read_csv(data_url)
+    df = pd.read_csv(data_url, encoding="cp949")
 
     
 
