@@ -8,9 +8,12 @@ Original file is located at
 """
 
 import streamlit as st
+import requests
 from PIL import Image
+from io import BytesIO
 import pandas as pd
 import plotly.express as px
+
 # 스트림릿 페이지 설정
 st.set_page_config(
     page_title="공공데이터 애널리틱스 - 6조 기말 발표",
