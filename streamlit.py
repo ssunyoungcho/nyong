@@ -68,15 +68,11 @@ if soc_dropdown == "자발적 이직률":
     st.markdown("• 조직의 인적자원 관리 수준이 산업평균 대비 적정한 수준을 유지하며 관리되고 있는지 확인")
     st.markdown("• 구성원이 자발적으로 조직을 이동하는 자발적 이직률을 점검(산업적 특성 반영)")
 
-    # 이미지 URL 사용
-    image_url = 'https://raw.githubusercontent.com/ssunyoungcho/nyong/main/이직률.png'
-    response = requests.get(image_url)
-    image = Image.open(BytesIO(response.content))
-    st.image(image, caption='이직률')
-
     # 데이터 불러오기
-    data_url = 'https://raw.githubusercontent.com/ssunyoungcho/nyong/main/연도별 산업별 이동자이동률.csv'
+    data_url = 'https://raw.githubusercontent.com/ssunyoungcho/nyong/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%83%E1%85%A9%E1%84%87%E1%85%A7%E1%86%AF%20%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%87%E1%85%A7%E1%86%AF%20%E1%84%8B%E1%85%B5%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%A9%E1%86%BC%E1%84%85%E1%85%B2%E1%86%AF.csv'
     df = pd.read_csv(data_url)
+
+    
 
     # Plotly 시각화
     df['year'] = df['year'].astype(int)
