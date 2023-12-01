@@ -68,6 +68,12 @@ if soc_dropdown == "자발적 이직률":
     st.markdown("• 조직의 인적자원 관리 수준이 산업평균 대비 적정한 수준을 유지하며 관리되고 있는지 확인")
     st.markdown("• 구성원이 자발적으로 조직을 이동하는 자발적 이직률을 점검(산업적 특성 반영)")
 
+
+    
+    image = Image.open('이직률.png')
+
+    st.image(image, use_column_width=True)
+
     # 데이터 불러오기
     data_url = 'https://raw.githubusercontent.com/ssunyoungcho/nyong/main/연도별%20산업별%20이동자이동률.csv'
     df = pd.read_csv(data_url)
